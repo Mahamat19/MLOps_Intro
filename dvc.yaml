@@ -8,3 +8,10 @@ stages:
     - src/preprocess.py
     outs:
     - data/iris_clean.csv
+  train:
+    cmd: python src/train.py --input data/iris_clean.csv --model data/model.pkl
+    deps:
+    - data/iris_clean.csv
+    - src/train.py
+    outs:
+    - data/model.pkl
