@@ -1,10 +1,10 @@
 stages:
   preprocess:
-    cmd: python src/preprocess.py --input 
-      /Users/mahamatabakarassouna/Downloads/MLOps_Intro/iris.json --output 
+    cmd:  python src/preprocess.py --input 
+      data/raw/iris.json --output 
       data/iris_clean.csv
     deps:
-    - iris.json
+    - data/raw/iris.json
     - src/preprocess.py
     outs:
     - data/iris_clean.csv

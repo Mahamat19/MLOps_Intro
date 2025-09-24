@@ -1,0 +1,35 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py --input data/raw/iris.json --output 
+      data/iris_clean.csv
+    deps:
+    - path: data/raw/iris.json
+      hash: md5
+      md5: e0652d0725a6bba3fb5afaf1861a0e53
+      size: 15699
+    - path: src/preprocess.py
+      hash: md5
+      md5: c0a48a9cbb62eec865c442bdddd22279
+      size: 666
+    outs:
+    - path: data/iris_clean.csv
+      hash: md5
+      md5: 7f282f7a572ae94d2d4b91bf9f009a8a
+      size: 4191
+  train:
+    cmd: python src/train.py --input data/iris_clean.csv --model data/model.pkl
+    deps:
+    - path: data/iris_clean.csv
+      hash: md5
+      md5: 7f282f7a572ae94d2d4b91bf9f009a8a
+      size: 4191
+    - path: src/train.py
+      hash: md5
+      md5: d0d37e359fbe056e736dd3229635dcb9
+      size: 643
+    outs:
+    - path: data/model.pkl
+      hash: md5
+      md5: de752e1a5139251e396fe98ef16e4875
+      size: 953
