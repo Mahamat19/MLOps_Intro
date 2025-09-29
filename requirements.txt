@@ -1,0 +1,23 @@
+pandas
+numpy
+scikit-learn
+joblib
+fastapi
+uvicorn
+pydantic
+python-dotenv
+requests
+dvc
+boto3
+mlflow
+pytest
+black
+flake8 
+jupyter             
+
+
+# Day4 packages
+fastapi
+sklearn.datasets
+sklearn.ensemble
+
