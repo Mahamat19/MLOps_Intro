@@ -1,6 +1,5 @@
 name: Manual Dispatch Pipeline
 
-# Trigger manually
 on:
   workflow_dispatch:
     inputs:
@@ -11,7 +10,7 @@ on:
       run_extra_step:
         description: 'Run extra step?'
         required: false
-        default: false
+        default: 'false'
         type: boolean
 
 jobs:
@@ -19,15 +18,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repository
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Print the input message
       - name: Print message
-        run: echo "Message: ${{ github.event.inputs.message }}"
+        run: |
+          echo "Message: ${{ github.event.inputs.message }}"
 
-      # Conditional extra step
       - name: Extra step
         if: ${{ github.event.inputs.run_extra_step == 'true' }}
-        run: echo "Running the extra step because run_extra_step is true!"
+        run: |
+          echo "Running the extra step because run_extra_step is true!"
