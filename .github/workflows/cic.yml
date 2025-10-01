@@ -1,5 +1,6 @@
 name: CI/CD Pipeline
 
+"""
 on:
   push:
     branches:
@@ -15,7 +16,7 @@ on:
       - 'day06/**'
       - '.github/workflows/cic.yml'
       - 'requirements.txt'
-
+"""
 jobs:
   test:
     name: Run Tests on Python 3.12
