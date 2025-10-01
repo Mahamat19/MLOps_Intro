@@ -18,15 +18,17 @@ jupyter
 
 # Day4 packages
 fastapi
-sklearn.datasets
-sklearn.ensemble
+scikit-learn
+uvicorn
+pydantic
+python-dotenv
 
-iniconfig==2.1.0
-packaging==25.0
-pluggy==1.6.0
-Pygments==2.19.2
-pytest==8.4.2
-pytest-mock==3.15.1
+iniconfig
+packaging
+pluggy
+Pygments
+pytest
+pytest-mock
 
 # Day6 packages
 matplotlib
