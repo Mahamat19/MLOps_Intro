@@ -26,6 +26,6 @@ jobs:
           echo "Message: ${{ github.event.inputs.message }}"
 
       - name: Extra step
-        if: ${{ github.event.inputs.run_extra_step == 'true' }}
+        if: ${{ github.event.inputs.run_extra_step }}
         run: |
           echo "Running the extra step because run_extra_step is true!"
