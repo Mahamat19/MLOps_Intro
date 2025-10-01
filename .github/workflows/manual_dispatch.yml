@@ -12,6 +12,11 @@ on:
         required: false
         default: false
         type: boolean
+      test_prediction:
+        description: 'Run sample prediction test?'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   manual_job:
@@ -21,6 +26,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
       - name: Print message
         run: |
           echo "Message: ${{ github.event.inputs.message }}"
@@ -29,3 +44,15 @@ jobs:
         if: ${{ github.event.inputs.run_extra_step }}
         run: |
           echo "Running the extra step because run_extra_step is true!"
+
+      - name: Start FastAPI server in background
+        if: ${{ github.event.inputs.test_prediction }}
+        run: |
+          nohup uvicorn day06.main:app --host 127.0.0.1 --port 8000 &
+          sleep 3  # give server time to start
+
+      - name: Test /predict endpoint
+        if: ${{ github.event.inputs.test_prediction }}
+        run: |
+          echo "Testing /predict/model_a endpoint with payload {\"data\": [1,2,3]}"
+          curl -X POST http://127.0.0.1:8000/predict/model_a -H "Content-Type: application/json" -d '{"data": [1,2,3]}'
