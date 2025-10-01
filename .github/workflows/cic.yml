@@ -1,5 +1,3 @@
-
-"""
 name: CI/CD Pipeline
 
 
@@ -53,40 +51,3 @@ jobs:
       # 5. Run pytest on tests inside day06 folder
       - name: Run Tests
         run: python -m pytest ./day06/tests/test_main.py -v
-
-"""
-
-
-name: Manual Dispatch Pipeline
-
-# Trigger manually
-on:
-  workflow_dispatch:
-    inputs:
-      message:
-        description: 'Message to print'
-        required: true
-        default: 'Hello from manual dispatch!'
-      run_extra_step:
-        description: 'Run extra step?'
-        required: false
-        default: false
-        type: boolean
-
-jobs:
-  manual_job:
-    runs-on: ubuntu-latest
-
-    steps:
-      # Checkout repository
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # Print the input message
-      - name: Print message
-        run: echo "Message: ${{ github.event.inputs.message }}"
-
-      # Conditional extra step
-      - name: Extra step
-        if: ${{ github.event.inputs.run_extra_step == 'true' }}
-        run: echo "Running the extra step because run_extra_step is true!"
