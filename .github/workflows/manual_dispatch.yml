@@ -49,7 +49,7 @@ jobs:
         if: ${{ github.event.inputs.test_prediction }}
         run: |
           nohup uvicorn day06.main:app --host 127.0.0.1 --port 8000 &
-          sleep 3  # give server time to start
+          sleep 3
 
       - name: Test /predict endpoint
         if: ${{ github.event.inputs.test_prediction }}
