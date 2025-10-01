@@ -10,7 +10,7 @@ on:
       run_extra_step:
         description: 'Run extra step?'
         required: false
-        default: false
+        default: 'false'
         type: boolean
 
 jobs:
