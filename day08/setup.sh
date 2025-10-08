@@ -7,7 +7,6 @@ airflow users create --username Mahamat19 --firstname Mahamat --lastname Assouna
 #     --firstname Mahamat \
 #     --lastname Assouna \
 #     --role Admin \
-#     --email amahamat@aimsammi.org \
-#     --password Assouna19@
+#     --email amahamat@aimsammi.org 
 
 # Dqx2emhWyEG9e2bY
